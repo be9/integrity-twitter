@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files = [
     "integrity-twitter.gemspec",
     "lib/notifier/config.haml",
-    "lib/notifier/integrity_twitter.rb",
+    "lib/notifier/twitter.rb",
     "Rakefile",
     "README.markdown",
     "spec/integrity_twitter_spec.rb",
