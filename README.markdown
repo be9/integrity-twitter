@@ -1,6 +1,8 @@
 Integrity (forked by pat nakajima for purely aesthetic reasons)
 =========
 
+TODO: add confit option for twitter names of people to DM or @reply when the build goes red.
+
 [Integrity][] is your friendly automated Continuous Integration server.
 
 Integrity Twitter Notifier
