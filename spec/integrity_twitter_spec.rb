@@ -29,6 +29,35 @@ describe Integrity::Notifier::IntegrityTwitter do
     end
   end
   
+  describe "message" do
+    attr_reader :build
+    
+    before(:each) do
+      @build = mock_build :commit_author => stub("author", :name => "nakajima")
+      @notifier = Integrity::Notifier::IntegrityTwitter.new(build, { })
+    end
+    
+    context "on a green build" do
+      before(:each) do
+        build.stub!(:successful?).and_return(true)
+      end
+      
+      it "returns a success message" do
+        @notifier.message.should == "GREEN | Integrity, commit e7e02b - [committer: nakajima]"
+      end
+    end
+    
+    context "on a red build" do
+      before(:each) do
+        build.stub!(:successful?).and_return(false)
+      end
+      
+      it "returns a fail message" do
+        @notifier.message.should == "FAIL! | Integrity, commit e7e02b - [committer: nakajima]"
+      end
+    end
+  end
+  
   describe "generating a form for configuration" do  
     describe "with a field for the email" do
       it "should have the proper name, id and label" do

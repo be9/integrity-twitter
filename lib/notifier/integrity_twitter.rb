@@ -12,9 +12,22 @@ module Integrity
 
       def deliver!
         @tweet = Twitter::Base.new(@config["email"], @config["pass"])
-        @tweet.post(short_message)
+        @tweet.post(message)
       end
       
+      def message
+        "#{build_status} | #{project.name}, commit #{build.short_commit_identifier} - [committer: #{build.commit_author.name}]"
+      end
+      
+      private
+      
+      def build_status
+        build.successful? ? 'GREEN' : 'FAIL!'
+      end
+      
+      def project
+        @project ||= build.project
+      end
     end
   end
 end
