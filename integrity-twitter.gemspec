@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-
 Gem::Specification.new do |s|
   s.name = %q{integrity-twitter}
   s.version = "1.0.3"
