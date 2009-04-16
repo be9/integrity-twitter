@@ -14,7 +14,7 @@ module Integrity
         httpauth = Twitter::HTTPAuth.new(@config['email'], @config['pass'])
         @tweet = Twitter::Base.new(httpauth)
 
-        @tweet.post(message)
+        @tweet.update(message)
       end
       
       def message
