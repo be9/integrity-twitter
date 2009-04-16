@@ -18,17 +18,13 @@ module Integrity
       end
       
       def message
-        "#{build_status} | #{project.name}, commit #{build.short_commit_identifier} - [committer: #{build.commit_author.name}]"
+        "#{build_status} | #{commit.project.name}, commit #{commit.short_identifier} - [committer: #{commit.author.name}]"
       end
       
       private
       
       def build_status
-        build.successful? ? 'GREEN' : 'FAIL!'
-      end
-      
-      def project
-        @project ||= build.project
+        commit.successful? ? 'GREEN' : 'FAIL!'
       end
     end
   end
